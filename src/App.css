@@ -3,3 +3,34 @@ body {
   background-color: #ccf381;
   color: #4831d4;
 }
+
+.trash {
+  color: red;
+}
+
+.input-form {
+  gap: 20px;
+  /* max-width: 80%; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+input {
+  background-color: #ccf381;
+  color: #4831d4;
+  /* border-color: #4831d4; */
+  border: 1px solid #4831d4;
+}
+
+select {
+  background-color: #ccf381;
+  color: #4831d4;
+  /* border-color: #4831d4; */
+  border: 1px solid #4831d4;
+}
+
+button {
+  background-color: #ccf381;
+  color: #4831d4;
+  border: 1px solid #4831d4;
+}
