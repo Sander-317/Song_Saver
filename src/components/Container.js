@@ -5,9 +5,6 @@ import InputForm from "./InputForm";
 import SongList from "./SongList";
 import Footer from "./Footer";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-
 export default class Container extends Component {
   constructor() {
     super();
@@ -15,11 +12,11 @@ export default class Container extends Component {
       home: true,
 
       songs: [
-        { id: 1, song: "Asong", artist: "Atester", gerne: "punk", rating: 5 },
-        { id: 1, song: "Asong", artist: "Atester", gerne: "disco", rating: 2 },
-        { id: 2, song: "Bsong", artist: "Btester", gerne: "rock", rating: 1 },
-        { id: 3, song: "Csong", artist: "Ctester", gerne: "punk", rating: 4 },
-        { id: 4, song: "Dsong", artist: "Dtester", gerne: "rock", rating: 3 },
+        { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
+        { id: 1, song: "Esong", artist: "Atester", genre: "disco", rating: 2 },
+        { id: 2, song: "Bsong", artist: "Btester", genre: "rock", rating: 1 },
+        { id: 3, song: "Csong", artist: "Ctester", genre: "punk", rating: 4 },
+        { id: 4, song: "Dsong", artist: "Dtester", genre: "rock", rating: 3 },
       ],
     };
     this.toggleHome = this.toggleHome.bind(this);
@@ -30,6 +27,13 @@ export default class Container extends Component {
     this.setState({ home: !this.state.home });
   }
 
+  // displayList() {
+  //   this.state.songs.map((item) => {
+  //     console.log(item);
+  //     return item;
+  //   });
+  // }
+
   render() {
     return (
       <div>
@@ -37,23 +41,9 @@ export default class Container extends Component {
           <div>
             <Header toggleHome={this.toggleHome} home={this.state.home} />
             <InputForm />
-            <table style={{ width: "100%" }}>
-              <tr className="song-header">
-                <th className="song-row__item">Song</th>
-                <th className="song-row__item">Artist</th>
-                <th className="song-row__item">Genre</th>
-                <th className="song-row__item">Rating</th>
-                <th className="song-row__item">
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faTrashCan}
-                    onClick={() => console.log("yeeey")}
-                    className="trash"
-                  />
-                </th>
-              </tr>
-            </table>
-            <SongList />
+
+            <SongList songs={this.state.songs} />
+
             <Footer />
           </div>
         ) : (

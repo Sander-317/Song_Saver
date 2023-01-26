@@ -34,3 +34,8 @@ button {
   color: #4831d4;
   border: 1px solid #4831d4;
 }
+
+li {
+  justify-content: space-between;
+  text-align: justify;
+}
