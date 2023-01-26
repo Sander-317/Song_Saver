@@ -14,7 +14,13 @@ export default class Container extends Component {
     this.state = {
       home: true,
 
-      songs: [],
+      songs: [
+        { id: 1, song: "Asong", artist: "Atester", gerne: "punk", rating: 5 },
+        { id: 1, song: "Asong", artist: "Atester", gerne: "disco", rating: 2 },
+        { id: 2, song: "Bsong", artist: "Btester", gerne: "rock", rating: 1 },
+        { id: 3, song: "Csong", artist: "Ctester", gerne: "punk", rating: 4 },
+        { id: 4, song: "Dsong", artist: "Dtester", gerne: "rock", rating: 3 },
+      ],
     };
     this.toggleHome = this.toggleHome.bind(this);
   }

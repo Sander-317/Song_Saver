@@ -4,7 +4,7 @@ export default function Header({ toggleHome, home }) {
   if (home === true)
     return (
       <div>
-        <h1>Son Saver</h1>
+        <h1>Song Saver</h1>
         <br />
         <button onClick={toggleHome}>about</button>
       </div>
