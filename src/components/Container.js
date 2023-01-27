@@ -13,10 +13,10 @@ export default class Container extends Component {
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
-        { id: 1, song: "Esong", artist: "Atester", genre: "disco", rating: 2 },
-        { id: 2, song: "Bsong", artist: "Btester", genre: "rock", rating: 1 },
-        { id: 3, song: "Csong", artist: "Ctester", genre: "punk", rating: 4 },
-        { id: 4, song: "Dsong", artist: "Dtester", genre: "rock", rating: 3 },
+        { id: 2, song: "Esong", artist: "Etester", genre: "disco", rating: 2 },
+        { id: 3, song: "Bsong", artist: "Btester", genre: "rock", rating: 1 },
+        { id: 4, song: "Csong", artist: "Ctester", genre: "punk", rating: 4 },
+        { id: 5, song: "Dsong", artist: "Dtester", genre: "rock", rating: 3 },
       ],
     };
     this.toggleHome = this.toggleHome.bind(this);
@@ -27,12 +27,9 @@ export default class Container extends Component {
     this.setState({ home: !this.state.home });
   }
 
-  // displayList() {
-  //   this.state.songs.map((item) => {
-  //     console.log(item);
-  //     return item;
-  //   });
-  // }
+  removeSongFromList = (array, id) => {
+    this.setState(array.filter((song) => song.id !== id));
+  };
 
   render() {
     return (
@@ -42,7 +39,10 @@ export default class Container extends Component {
             <Header toggleHome={this.toggleHome} home={this.state.home} />
             <InputForm />
 
-            <SongList songs={this.state.songs} />
+            <SongList
+              songs={this.state.songs}
+              removeSong={this.removeSongFromSongList}
+            />
 
             <Footer />
           </div>
