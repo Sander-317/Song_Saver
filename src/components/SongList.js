@@ -27,7 +27,8 @@ export default function SongList({ songs, removeSong }) {
                 <td>
                   <FontAwesomeIcon
                     icon={faTrashCan}
-                    onClick={() => removeSong(songs, item.id)}
+                    // onClick={() => removeSong(songs, item.id)}
+                    onClick={() => console.log("remove", item.id)}
                     className="trash"
                   />
                 </td>
