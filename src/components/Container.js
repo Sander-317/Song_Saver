@@ -21,6 +21,7 @@ export default class Container extends Component {
       ],
     };
     this.toggleHome = this.toggleHome.bind(this);
+    this.removeSongFromList = this.removeSongFromList.bind(this);
   }
 
   toggleHome() {
@@ -64,7 +65,7 @@ export default class Container extends Component {
 
             <SongList
               songs={this.state.songs}
-              removeSong={this.removeSongFromSongList}
+              removeSong={this.removeSongFromList}
             />
 
             <Footer />
