@@ -10,6 +10,7 @@ export default class Container extends Component {
     super();
     this.state = {
       home: true,
+      id: 5,
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
@@ -31,10 +32,23 @@ export default class Container extends Component {
     this.setState(array.filter((song) => song.id !== id));
   };
 
-  addSongToList = (song, artist, gerne, rating) => {
+  addSongToList = (song, artist, genre, rating) => {
     console.log(
-      `add to list song = ${song} artist = ${artist} gerne = ${gerne} rating = ${rating}`
+      `add to list song = ${song} artist = ${artist} genre = ${genre} rating = ${rating}`
     );
+    this.setState({
+      songs: [
+        ...this.state.songs,
+        {
+          id: this.state.id + 1,
+          song: song,
+          artist: artist,
+          genre: genre,
+          rating: rating,
+        },
+      ],
+    });
+    this.setState({ id: this.state.id + 1 });
   };
 
   render() {

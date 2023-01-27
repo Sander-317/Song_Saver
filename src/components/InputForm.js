@@ -4,14 +4,18 @@ import { useState } from "react";
 export default function InputForm({ addSong }) {
   const [inputSong, setInputSong] = useState("");
   const [inputArtist, setInputArtist] = useState("");
-  const [inputGerne, setInputGerne] = useState("");
+  const [inputGenre, setInputGenre] = useState("");
   const [inputRating, setInputRating] = useState("");
 
-  function onButtonPress() {
-    if (inputSong.length > 0 && inputArtist.length > 0 && inputGerne !== 0) {
-      addSong(inputSong, inputArtist, inputGerne, inputRating);
+  function onButtonPress(e) {
+    e.preventDefault();
+    if (inputSong.length > 0 && inputArtist.length > 0 && inputGenre !== "") {
+      addSong(inputSong, inputArtist, inputGenre, inputRating);
       setInputSong("");
       setInputArtist("");
+    } else {
+      console.log("No input");
+      alert("Please enter all info");
     }
   }
 
@@ -32,10 +36,10 @@ export default function InputForm({ addSong }) {
         />
         <select
           name="gerne"
-          value={inputGerne}
-          onChange={(e) => setInputGerne(e.target.value)}
+          value={inputGenre}
+          onChange={(e) => setInputGenre(e.target.value)}
         >
-          <option value="">gerne</option>
+          <option value="">genre</option>
           <option value="rock">rock</option>
           <option value="punk">punk</option>
           <option value="disco">disco</option>
