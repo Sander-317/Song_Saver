@@ -31,13 +31,19 @@ export default class Container extends Component {
     this.setState(array.filter((song) => song.id !== id));
   };
 
+  addSongToList = (song, artist, gerne, rating) => {
+    console.log(
+      `add to list song = ${song} artist = ${artist} gerne = ${gerne} rating = ${rating}`
+    );
+  };
+
   render() {
     return (
       <div>
         {this.state.home ? (
           <div>
             <Header toggleHome={this.toggleHome} home={this.state.home} />
-            <InputForm />
+            <InputForm addSong={this.addSongToList} />
 
             <SongList
               songs={this.state.songs}
