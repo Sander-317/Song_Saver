@@ -10,6 +10,7 @@ export default class Container extends Component {
     super();
     this.state = {
       home: true,
+      settings: false,
       songId: 5,
       genreId: 0,
 
@@ -27,12 +28,17 @@ export default class Container extends Component {
       ],
     };
     this.toggleHome = this.toggleHome.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
     this.removeSongFromList = this.removeSongFromList.bind(this);
     this.sortList = this.sortList.bind(this);
   }
 
   toggleHome() {
     this.setState({ home: !this.state.home });
+  }
+
+  toggleSettings() {
+    this.setState({ settings: !this.state.settings });
   }
 
   removeSongFromList(e) {
@@ -111,9 +117,15 @@ export default class Container extends Component {
   render() {
     return (
       <div>
+        {this.state.settings ? console.log("settings work") : ""}
+
         {this.state.home ? (
           <div>
-            <Header toggleHome={this.toggleHome} home={this.state.home} />
+            <Header
+              toggleHome={this.toggleHome}
+              toggleSettings={this.toggleSettings}
+              home={this.state.home}
+            />
             <InputForm
               addSong={this.addSongToList}
               genres={this.state.genres}
@@ -130,7 +142,11 @@ export default class Container extends Component {
         ) : (
           <div>
             {" "}
-            <Header toggleHome={this.toggleHome} home={this.state.home} />
+            <Header
+              toggleHome={this.toggleHome}
+              toggleSettings={this.toggleSettings}
+              home={this.state.home}
+            />
             <About />{" "}
           </div>
         )}
