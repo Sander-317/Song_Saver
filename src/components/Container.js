@@ -27,18 +27,23 @@ export default class Container extends Component {
         { id: 3, genre: "disco" },
       ],
     };
-    this.toggleHome = this.toggleHome.bind(this);
-    this.toggleSettings = this.toggleSettings.bind(this);
+
+    this.toggleState = this.toggleState.bind(this);
     this.removeSongFromList = this.removeSongFromList.bind(this);
     this.sortList = this.sortList.bind(this);
   }
 
-  toggleHome() {
-    this.setState({ home: !this.state.home });
-  }
-
-  toggleSettings() {
-    this.setState({ settings: !this.state.settings });
+  toggleState(e) {
+    switch (e) {
+      case "home":
+        this.setState({ home: !this.state.home });
+        break;
+      case "settings":
+        this.setState({ settings: !this.state.settings });
+        break;
+      default:
+        console.log(e);
+    }
   }
 
   removeSongFromList(e) {
@@ -121,11 +126,7 @@ export default class Container extends Component {
 
         {this.state.home ? (
           <div>
-            <Header
-              toggleHome={this.toggleHome}
-              toggleSettings={this.toggleSettings}
-              home={this.state.home}
-            />
+            <Header home={this.state.home} toggleState={this.toggleState} />
             <InputForm
               addSong={this.addSongToList}
               genres={this.state.genres}
@@ -142,11 +143,7 @@ export default class Container extends Component {
         ) : (
           <div>
             {" "}
-            <Header
-              toggleHome={this.toggleHome}
-              toggleSettings={this.toggleSettings}
-              home={this.state.home}
-            />
+            <Header toggleState={this.toggleState} home={this.state.home} />
             <About />{" "}
           </div>
         )}
