@@ -10,7 +10,8 @@ export default class Container extends Component {
     super();
     this.state = {
       home: true,
-      id: 5,
+      songId: 5,
+      genreId: 0,
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
@@ -19,7 +20,11 @@ export default class Container extends Component {
         { id: 4, song: "Csong", artist: "Ctester", genre: "punk", rating: 4 },
         { id: 5, song: "Dsong", artist: "Dtester", genre: "rock", rating: 3 },
       ],
-      displaySongs: [],
+      genres: [
+        { id: 1, genre: "punk" },
+        { id: 2, genre: "rock" },
+        { id: 3, genre: "disco" },
+      ],
     };
     this.toggleHome = this.toggleHome.bind(this);
     this.removeSongFromList = this.removeSongFromList.bind(this);
@@ -41,7 +46,7 @@ export default class Container extends Component {
       songs: [
         ...this.state.songs,
         {
-          id: this.state.id + 1,
+          id: this.state.songId + 1,
           song: song,
           artist: artist,
           genre: genre,
@@ -49,7 +54,7 @@ export default class Container extends Component {
         },
       ],
     });
-    this.setState({ id: this.state.id + 1 });
+    this.setState({ songId: this.state.songId + 1 });
   };
 
   sortList(e) {
@@ -109,7 +114,10 @@ export default class Container extends Component {
         {this.state.home ? (
           <div>
             <Header toggleHome={this.toggleHome} home={this.state.home} />
-            <InputForm addSong={this.addSongToList} />
+            <InputForm
+              addSong={this.addSongToList}
+              genres={this.state.genres}
+            />
 
             <SongList
               songs={this.state.songs}

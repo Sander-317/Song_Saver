@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function InputForm({ addSong }) {
+export default function InputForm({ addSong, genres }) {
   const [inputSong, setInputSong] = useState("");
   const [inputArtist, setInputArtist] = useState("");
   const [inputGenre, setInputGenre] = useState("");
@@ -39,9 +39,13 @@ export default function InputForm({ addSong }) {
           onChange={(e) => setInputGenre(e.target.value)}
         >
           <option value="">genre</option>
-          <option value="rock">rock</option>
-          <option value="punk">punk</option>
-          <option value="disco">disco</option>
+          {genres.map((item) => {
+            return (
+              <option key={item.id} value={item.genre}>
+                {item.genre}
+              </option>
+            );
+          })}
         </select>
         <select
           name="rating"
