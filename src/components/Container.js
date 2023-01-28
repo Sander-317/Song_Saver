@@ -31,7 +31,6 @@ export default class Container extends Component {
   }
 
   removeSongFromList(e) {
-    console.log("state", e);
     this.setState({
       songs: this.state.songs.filter((id) => id !== e),
     });

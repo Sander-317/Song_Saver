@@ -4,10 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function SongList({ songs, removeSong, sortList }) {
-  function onButtonPress(e) {
-    removeSong(e);
-  }
-
   return (
     <div>
       <table style={{ width: "100%" }}>
@@ -45,7 +41,7 @@ export default function SongList({ songs, removeSong, sortList }) {
                   <FontAwesomeIcon
                     icon={faTrashCan}
                     value={item.id}
-                    onClick={() => onButtonPress(item)}
+                    onClick={() => removeSong(item)}
                     className="trash"
                   />
                 </td>
