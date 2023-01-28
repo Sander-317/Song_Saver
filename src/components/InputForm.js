@@ -14,7 +14,6 @@ export default function InputForm({ addSong }) {
       setInputSong("");
       setInputArtist("");
     } else {
-      console.log("No input");
       alert("Please enter all info");
     }
   }

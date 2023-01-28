@@ -27,7 +27,6 @@ export default class Container extends Component {
   }
 
   toggleHome() {
-    console.log("toggle home");
     this.setState({ home: !this.state.home });
   }
 
@@ -39,9 +38,6 @@ export default class Container extends Component {
   }
 
   addSongToList = (song, artist, genre, rating) => {
-    console.log(
-      `add to list song = ${song} artist = ${artist} genre = ${genre} rating = ${rating}`
-    );
     this.setState({
       songs: [
         ...this.state.songs,
@@ -62,7 +58,6 @@ export default class Container extends Component {
       let sortOrder = 1;
       if (property[0] === "-") {
         sortOrder = -1;
-        property = property.substr(1);
       }
       return function (a, b) {
         let result =
@@ -70,54 +65,42 @@ export default class Container extends Component {
         return result * sortOrder;
       };
     }
-    // console.log(`sort list ${e}`);
+
     switch (e) {
       case "sortSongAZ":
-        console.log(`switch sortSongAZ = ${e}`);
         this.setState({ songs: this.state.songs.sort(sort("song")) });
-        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
         break;
       case "sortSongZA":
-        console.log(`switch sortSongZA = ${e}`);
         this.setState({
           songs: this.state.songs.sort(sort("song")).reverse(),
         });
         break;
       case "sortArtistAZ":
-        console.log(`switch sortArtistAZ = ${e}`);
         this.setState({ songs: this.state.songs.sort(sort("artist")) });
-        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
         break;
       case "sortArtistZA":
-        console.log(`switch sortArtistZA = ${e}`);
         this.setState({
           songs: this.state.songs.sort(sort("artist")).reverse(),
         });
         break;
       case "sortGenreAZ":
-        console.log(`switch sortGenreAZ = ${e}`);
         this.setState({ songs: this.state.songs.sort(sort("genre")) });
-        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
         break;
       case "sortGenreZA":
-        console.log(`switch sortGenreZA = ${e}`);
         this.setState({
           songs: this.state.songs.sort(sort("genre")).reverse(),
         });
         break;
-      case "sortRatingAZ":
-        console.log(`switch sortRatingAZ = ${e}`);
+      case "sortRating09":
         this.setState({ songs: this.state.songs.sort(sort("rating")) });
-        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
         break;
-      case "sortRatingZA":
-        console.log(`switch sortRatingZA = ${e}`);
+      case "sortRating90":
         this.setState({
           songs: this.state.songs.sort(sort("rating")).reverse(),
         });
         break;
       default:
-        console.log("switch default");
+        this.setState({ songs: this.state.songs.sort(sort("id")) });
     }
   }
 

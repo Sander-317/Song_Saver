@@ -1,16 +1,10 @@
 import React from "react";
-// import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function SongList({ songs, removeSong, sortList }) {
-  // const [removeInput, setRemoveInput] = useState("");
-  // removeSong(removeInput);
-
   function onButtonPress(e) {
-    // console.log(` on button pres ${e.target.value}`);
-    console.log("onbuttonpress", e);
     removeSong(e);
   }
 
@@ -26,7 +20,7 @@ export default function SongList({ songs, removeSong, sortList }) {
             <th className="song-row__item">
               {" "}
               <select name="sort" onChange={(e) => sortList(e.target.value)}>
-                <option value="">sort</option>
+                <option value="default">sort</option>
                 <option value="sortSongAZ">songA-Z</option>
                 <option value="sortSongZA">songZ-A</option>
                 <option value="sortArtistAZ">artistA-Z</option>
@@ -48,15 +42,10 @@ export default function SongList({ songs, removeSong, sortList }) {
                 <td>{item.genre}</td>
                 <td>{item.rating}</td>
                 <td>
-                  {/* <button value={item.id} onClick={() => onButtonPress(item)}>
-                    remove
-                  </button> */}
                   <FontAwesomeIcon
                     icon={faTrashCan}
                     value={item.id}
                     onClick={() => onButtonPress(item)}
-                    // onClick={() => setRemoveInput(item.id)}
-                    // onClick={() => console.log("remove", item.id)}
                     className="trash"
                   />
                 </td>
