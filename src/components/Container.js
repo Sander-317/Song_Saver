@@ -19,9 +19,11 @@ export default class Container extends Component {
         { id: 4, song: "Csong", artist: "Ctester", genre: "punk", rating: 4 },
         { id: 5, song: "Dsong", artist: "Dtester", genre: "rock", rating: 3 },
       ],
+      displaySongs: [],
     };
     this.toggleHome = this.toggleHome.bind(this);
     this.removeSongFromList = this.removeSongFromList.bind(this);
+    this.sortList = this.sortList.bind(this);
   }
 
   toggleHome() {
@@ -55,6 +57,70 @@ export default class Container extends Component {
     this.setState({ id: this.state.id + 1 });
   };
 
+  sortList(e) {
+    function sort(property) {
+      let sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function (a, b) {
+        let result =
+          a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+        return result * sortOrder;
+      };
+    }
+    // console.log(`sort list ${e}`);
+    switch (e) {
+      case "sortSongAZ":
+        console.log(`switch sortSongAZ = ${e}`);
+        this.setState({ songs: this.state.songs.sort(sort("song")) });
+        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
+        break;
+      case "sortSongZA":
+        console.log(`switch sortSongZA = ${e}`);
+        this.setState({
+          songs: this.state.songs.sort(sort("song")).reverse(),
+        });
+        break;
+      case "sortArtistAZ":
+        console.log(`switch sortArtistAZ = ${e}`);
+        this.setState({ songs: this.state.songs.sort(sort("artist")) });
+        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
+        break;
+      case "sortArtistZA":
+        console.log(`switch sortArtistZA = ${e}`);
+        this.setState({
+          songs: this.state.songs.sort(sort("artist")).reverse(),
+        });
+        break;
+      case "sortGenreAZ":
+        console.log(`switch sortGenreAZ = ${e}`);
+        this.setState({ songs: this.state.songs.sort(sort("genre")) });
+        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
+        break;
+      case "sortGenreZA":
+        console.log(`switch sortGenreZA = ${e}`);
+        this.setState({
+          songs: this.state.songs.sort(sort("genre")).reverse(),
+        });
+        break;
+      case "sortRatingAZ":
+        console.log(`switch sortRatingAZ = ${e}`);
+        this.setState({ songs: this.state.songs.sort(sort("rating")) });
+        // console.log(`after sort displaySongs = ${this.state.displaySongs}`);
+        break;
+      case "sortRatingZA":
+        console.log(`switch sortRatingZA = ${e}`);
+        this.setState({
+          songs: this.state.songs.sort(sort("rating")).reverse(),
+        });
+        break;
+      default:
+        console.log("switch default");
+    }
+  }
+
   render() {
     return (
       <div>
@@ -66,6 +132,7 @@ export default class Container extends Component {
             <SongList
               songs={this.state.songs}
               removeSong={this.removeSongFromList}
+              sortList={this.sortList}
             />
 
             <Footer />
