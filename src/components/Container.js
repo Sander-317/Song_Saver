@@ -123,10 +123,10 @@ export default class Container extends Component {
     return (
       <div>
         {this.state.addGenre ? console.log("addGenre work") : ""}
+        <Header home={this.state.home} toggleState={this.toggleState} />
 
         {this.state.home ? (
           <div>
-            <Header home={this.state.home} toggleState={this.toggleState} />
             <InputForm
               addSong={this.addSongToList}
               genres={this.state.genres}
@@ -143,7 +143,6 @@ export default class Container extends Component {
         ) : (
           <div>
             {" "}
-            <Header toggleState={this.toggleState} home={this.state.home} />
             <About />{" "}
           </div>
         )}

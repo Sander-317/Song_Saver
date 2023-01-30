@@ -8,36 +8,17 @@ export default function Header({
 
   toggleState,
 }) {
-  if (home === true)
-    return (
-      <div>
-        <h1>Song Saver</h1>
-        <br />
+  return (
+    <div>
+      <h1>Song Saver</h1>
+      <br />
 
-        <button onClick={(e) => toggleState("home")}>about</button>
+      <button onClick={(e) => toggleState("home")}>
+        {home ? "About" : "Home"}
+      </button>
 
-        <button onClick={(e) => toggleState("addGenre")}>settings</button>
-        <FontAwesomeIcon
-          icon={faGear}
-          onClick={() => toggleState("addGenre")}
-        />
-      </div>
-    );
-  else {
-    return (
-      <div>
-        <h1>Son Saver</h1>
-        <br />
-        <button
-          id="home"
-          value="home"
-          onClick={(e) => toggleState(e.target.value)}
-        >
-          home
-        </button>
-        <br></br>
-        {/* <FontAwesomeIcon icon={faGear} onClick={toggleSettings} /> */}
-      </div>
-    );
-  }
+      <button onClick={(e) => toggleState("addGenre")}>addGenre</button>
+      <FontAwesomeIcon icon={faGear} onClick={() => toggleState("addGenre")} />
+    </div>
+  );
 }
