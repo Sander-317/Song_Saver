@@ -88,3 +88,7 @@ tbody tr:nth-child(2n + 1) {
   color: #ccf381;
   background-color: rgb(72, 49, 212, 0.4);
 }
+
+.star {
+  color: goldenrod;
+}

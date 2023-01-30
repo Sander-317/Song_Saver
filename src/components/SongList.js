@@ -2,6 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default function SongList({
   songs,
@@ -45,8 +46,8 @@ export default function SongList({
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
                 <td>
-                  {starArray.map((item) => {
-                    return item;
+                  {[...Array(item.rating)].map(() => {
+                    return <FontAwesomeIcon className="star" icon={faStar} />;
                   })}
                 </td>
                 <td>

@@ -6,8 +6,8 @@ import SongList from "./SongList";
 import Footer from "./Footer";
 import AddGenre from "./modal/AddGenre";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default class Container extends Component {
   constructor() {
@@ -18,7 +18,7 @@ export default class Container extends Component {
       songId: 5,
       genreId: 4,
       starId: 1,
-      starArray: [{ id: 0, icon: "" }],
+      starArray: [],
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
@@ -42,30 +42,31 @@ export default class Container extends Component {
   }
 
   createStarArray(rating) {
-    let i = 0;
-    let newArray = [];
-    const icon = <FontAwesomeIcon icon={faStar} />;
-    while (i < rating) {
-      newArray.push(icon);
-      // this.setState({
-      //   starArray: [...this.state.starArray, icon],
-      // });
-      console.log("star");
-      console.log(newArray);
-      i++;
-    }
+    console.log(rating);
+    // let i = 0;
+    // let newArray = [];
+    // const icon = <FontAwesomeIcon icon={faStar} />;
+    // // while (i < rating) {
+    //   newArray.push(icon);
+    //   // this.setState({
+    //   //   starArray: [...this.state.starArray, icon],
+    //   // });
+    //   console.log("star");
+    //   console.log(newArray);
+    //   i++;
+    // }
     // newArray.map((item) => {
     //    this.setState({ starArray: [...this.state.starArray, item] });
     // });
-    newArray.forEach((item) => {
-      this.setState({
-        starArray: [
-          ...this.state.starArray,
-          { id: this.state.starId, icon: item },
-        ],
-      });
-      this.setState({ starId: this.state.starId + 1 });
-    });
+    // newArray.forEach((item) => {
+    //   this.setState({
+    //     starArray: [
+    //       ...this.state.starArray,
+    //       { id: this.state.starId, icon: item },
+    //     ],
+    //   });
+    //   this.setState({ starId: this.state.starId + 1 });
+    // });
   }
 
   toggleState(e) {
