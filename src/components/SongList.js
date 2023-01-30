@@ -44,7 +44,7 @@ export default function SongList({
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
                 <td>
-                  {/* TODO: Try to find a way to get the icon a unique id */}
+                  {/* TODO: Try to find a way to get the icon a unique id i have no clue how*/}
                   {[...Array(item.rating)].map(() => {
                     return <FontAwesomeIcon className="star" icon={faStar} />;
                   })}
