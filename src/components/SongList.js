@@ -38,14 +38,13 @@ export default function SongList({
         </thead>
         <tbody>
           {songs.map((item) => {
-            createStarArray(item.rating);
-
             return (
               <tr key={item.id}>
                 <td>{item.song}</td>
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
                 <td>
+                  {/* TODO: Try to find a way to get the icon a unique id */}
                   {[...Array(item.rating)].map(() => {
                     return <FontAwesomeIcon className="star" icon={faStar} />;
                   })}
