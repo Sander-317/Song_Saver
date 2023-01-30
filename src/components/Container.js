@@ -133,6 +133,17 @@ export default class Container extends Component {
           songs: this.state.songs.sort(sort("rating")).reverse(),
         });
         break;
+      case "genreAZ":
+        this.setState({ genres: this.state.genres.sort(sort("genre")) });
+        break;
+      case "genreZA":
+        this.setState({
+          genres: this.state.genres.sort(sort("genre")).reverse(),
+        });
+        break;
+      case "defaultGenre":
+        this.setState({ genres: this.state.genres.sort(sort("id")) });
+        break;
       default:
         this.setState({ songs: this.state.songs.sort(sort("id")) });
     }
@@ -149,6 +160,7 @@ export default class Container extends Component {
             genres={this.state.genres}
             removeGenreFromList={this.removeGenreFromList}
             addGenreToList={this.addGenreToList}
+            sortList={this.sortList}
           />
         ) : (
           ""

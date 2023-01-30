@@ -8,6 +8,7 @@ export default function AddGenre({
   genres,
   addGenreToList,
   removeGenreFromList,
+  sortList,
 }) {
   const [inputGenre, setInputGenre] = useState("");
 
@@ -44,7 +45,15 @@ export default function AddGenre({
                 <tr>
                   <th>genre</th>
                   <th>
-                    <select>sort</select>
+                    <select
+                      name="sort"
+                      onChange={(e) => sortList(e.target.value)}
+                    >
+                      sort
+                      <option value="defaultGenre">sort</option>
+                      <option value="genreAZ">genreA-Z</option>
+                      <option value="genreZA">genreZ-A</option>
+                    </select>
                   </th>
                 </tr>
               </thead>
