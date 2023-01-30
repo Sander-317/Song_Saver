@@ -4,6 +4,7 @@ import Header from "./Header";
 import InputForm from "./InputForm";
 import SongList from "./SongList";
 import Footer from "./Footer";
+import AddGenre from "./modal/AddGenre";
 
 export default class Container extends Component {
   constructor() {
@@ -39,7 +40,7 @@ export default class Container extends Component {
         this.setState({ home: !this.state.home });
         break;
       case "addGenre":
-        this.setState({ addGenre: !this.state.settings });
+        this.setState({ addGenre: !this.state.addGenre });
         break;
       default:
         console.log(e);
@@ -122,9 +123,9 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        {this.state.addGenre ? console.log("addGenre work") : ""}
         <Header home={this.state.home} toggleState={this.toggleState} />
 
+        {this.state.addGenre ? <AddGenre /> : ""}
         {this.state.home ? (
           <div>
             <InputForm
