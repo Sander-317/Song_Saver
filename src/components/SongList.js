@@ -3,7 +3,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-export default function SongList({ songs, removeSong, sortList }) {
+export default function SongList({
+  songs,
+  removeSong,
+  sortList,
+  starArray,
+  createStarArray,
+}) {
   return (
     <div>
       <table style={{ width: "100%" }}>
@@ -31,12 +37,18 @@ export default function SongList({ songs, removeSong, sortList }) {
         </thead>
         <tbody>
           {songs.map((item) => {
+            createStarArray(item.rating);
+
             return (
               <tr key={item.id}>
                 <td>{item.song}</td>
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
-                <td>{item.rating}</td>
+                <td>
+                  {starArray.map((item) => {
+                    return item;
+                  })}
+                </td>
                 <td>
                   <FontAwesomeIcon
                     icon={faTrashCan}

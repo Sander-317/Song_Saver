@@ -6,6 +6,9 @@ import SongList from "./SongList";
 import Footer from "./Footer";
 import AddGenre from "./modal/AddGenre";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 export default class Container extends Component {
   constructor() {
     super();
@@ -14,6 +17,8 @@ export default class Container extends Component {
       addGenre: false,
       songId: 5,
       genreId: 4,
+      starId: 1,
+      starArray: [{ id: 0, icon: "" }],
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
@@ -34,6 +39,33 @@ export default class Container extends Component {
     this.sortList = this.sortList.bind(this);
     this.removeGenreFromList = this.removeGenreFromList.bind(this);
     this.addGenreToList = this.addGenreToList.bind(this);
+  }
+
+  createStarArray(rating) {
+    let i = 0;
+    let newArray = [];
+    const icon = <FontAwesomeIcon icon={faStar} />;
+    while (i < rating) {
+      newArray.push(icon);
+      // this.setState({
+      //   starArray: [...this.state.starArray, icon],
+      // });
+      console.log("star");
+      console.log(newArray);
+      i++;
+    }
+    // newArray.map((item) => {
+    //    this.setState({ starArray: [...this.state.starArray, item] });
+    // });
+    newArray.forEach((item) => {
+      this.setState({
+        starArray: [
+          ...this.state.starArray,
+          { id: this.state.starId, icon: item },
+        ],
+      });
+      this.setState({ starId: this.state.starId + 1 });
+    });
   }
 
   toggleState(e) {
@@ -176,6 +208,8 @@ export default class Container extends Component {
               songs={this.state.songs}
               removeSong={this.removeSongFromList}
               sortList={this.sortList}
+              starArray={this.state.starArray}
+              createStarArray={this.createStarArray}
             />
 
             <Footer />
