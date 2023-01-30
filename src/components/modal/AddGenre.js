@@ -1,5 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function AddGenre() {
-  return <div>AddGenre</div>;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
+export default function AddGenre({
+  toggleState,
+  genres,
+  addGenreToList,
+  removeGenreFromList,
+}) {
+  const [inputGenre, setInputGenre] = useState("");
+
+  function onButtonPress(e) {
+    e.preventDefault();
+    if (inputGenre.length > 0) {
+      console.log(inputGenre);
+      addGenreToList(inputGenre);
+      setInputGenre("");
+    }
+  }
+  return (
+    <div className="modal">
+      <div className="modal-background">
+        <div className="modal-container">
+          <div className="modal-content">
+            <form>
+              <input
+                type="text"
+                placeholder="genre"
+                value={inputGenre}
+                onChange={(e) => setInputGenre(e.target.value)}
+              ></input>
+              <button onClick={onButtonPress}>add genre</button>
+            </form>
+            <button
+              className="close-modal"
+              onClick={() => toggleState("addGenre")}
+            >
+              X
+            </button>
+            <table>
+              <thead>
+                <tr>
+                  <th>genre</th>
+                  <th>
+                    <select>sort</select>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {genres.map((item) => {
+                  return (
+                    <tr key={item.id}>
+                      <td>{item.genre}</td>
+                      <td>
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          value={item.id}
+                          onClick={() => removeGenreFromList(item)}
+                          className="trash"
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

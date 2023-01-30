@@ -32,6 +32,8 @@ export default class Container extends Component {
     this.toggleState = this.toggleState.bind(this);
     this.removeSongFromList = this.removeSongFromList.bind(this);
     this.sortList = this.sortList.bind(this);
+    this.removeGenreFromList = this.removeGenreFromList.bind(this);
+    this.addGenreToList = this.addGenreToList.bind(this);
   }
 
   toggleState(e) {
@@ -53,6 +55,12 @@ export default class Container extends Component {
     });
   }
 
+  removeGenreFromList(e) {
+    this.setState({
+      genres: this.state.genres.filter((id) => id !== e),
+    });
+  }
+
   addSongToList = (song, artist, genre, rating) => {
     this.setState({
       songs: [
@@ -67,6 +75,16 @@ export default class Container extends Component {
       ],
     });
     this.setState({ songId: this.state.songId + 1 });
+  };
+
+  addGenreToList = (genre) => {
+    this.setState({
+      genres: [
+        ...this.state.genres,
+        { id: this.state.genreId + 1, genre: genre },
+      ],
+    });
+    this.setState({ genreId: this.state.genreId + 1 });
   };
 
   sortList(e) {
@@ -125,7 +143,16 @@ export default class Container extends Component {
       <div>
         <Header home={this.state.home} toggleState={this.toggleState} />
 
-        {this.state.addGenre ? <AddGenre /> : ""}
+        {this.state.addGenre ? (
+          <AddGenre
+            toggleState={this.toggleState}
+            genres={this.state.genres}
+            removeGenreFromList={this.removeGenreFromList}
+            addGenreToList={this.addGenreToList}
+          />
+        ) : (
+          ""
+        )}
         {this.state.home ? (
           <div>
             <InputForm
