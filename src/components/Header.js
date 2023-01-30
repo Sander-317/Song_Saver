@@ -14,24 +14,12 @@ export default function Header({
         <h1>Song Saver</h1>
         <br />
 
-        <button
-          id="home"
-          value="home"
-          onClick={(e) => toggleState(e.target.value)}
-        >
-          about
-        </button>
+        <button onClick={(e) => toggleState("home")}>about</button>
 
-        <button
-          id="settings"
-          value="settings"
-          onClick={(e) => toggleState(e.target.value)}
-        >
-          settings
-        </button>
+        <button onClick={(e) => toggleState("addGenre")}>settings</button>
         <FontAwesomeIcon
           icon={faGear}
-          onClick={() => toggleState("settings")}
+          onClick={() => toggleState("addGenre")}
         />
       </div>
     );

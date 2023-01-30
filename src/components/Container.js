@@ -10,9 +10,9 @@ export default class Container extends Component {
     super();
     this.state = {
       home: true,
-      settings: false,
+      addGenre: false,
       songId: 5,
-      genreId: 0,
+      genreId: 4,
 
       songs: [
         { id: 1, song: "Asong", artist: "Atester", genre: "punk", rating: 5 },
@@ -38,8 +38,8 @@ export default class Container extends Component {
       case "home":
         this.setState({ home: !this.state.home });
         break;
-      case "settings":
-        this.setState({ settings: !this.state.settings });
+      case "addGenre":
+        this.setState({ addGenre: !this.state.settings });
         break;
       default:
         console.log(e);
@@ -122,7 +122,7 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        {this.state.settings ? console.log("settings work") : ""}
+        {this.state.addGenre ? console.log("addGenre work") : ""}
 
         {this.state.home ? (
           <div>
