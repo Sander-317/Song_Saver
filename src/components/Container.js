@@ -76,7 +76,7 @@ export default class Container extends Component {
           song: song,
           artist: artist,
           genre: genre,
-          rating: rating,
+          rating: +rating,
         },
       ],
     });
