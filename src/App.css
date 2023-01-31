@@ -92,3 +92,13 @@ tbody tr:nth-child(2n + 1) {
 .star {
   color: goldenrod;
 }
+
+.music-note {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.about-p-tag {
+  margin-left: 20vw;
+  margin-right: 20vw;
+}

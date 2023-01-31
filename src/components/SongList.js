@@ -4,13 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-export default function SongList({
-  songs,
-  removeSong,
-  sortList,
-  starArray,
-  createStarArray,
-}) {
+export default function SongList({ songs, removeSong, sortList }) {
   return (
     <div>
       <table style={{ width: "100%" }}>
@@ -44,7 +38,7 @@ export default function SongList({
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
                 <td>
-                  {/* TODO: Try to find a way to get the icon a unique id i have no clue how*/}
+                  {/* FIXME: Try to find a way to get the icon a unique id i have no clue how i have tried many ways please help*/}
                   {[...Array(item.rating)].map(() => {
                     return <FontAwesomeIcon className="star" icon={faStar} />;
                   })}
