@@ -52,7 +52,7 @@ export default function InputForm({ addSong, genres }) {
           value={inputRating}
           onChange={(e) => setInputRating(e.target.value)}
         >
-          <option value="0">Rating</option>
+          <option value="o">Rating</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
