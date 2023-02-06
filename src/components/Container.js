@@ -131,10 +131,12 @@ export default class Container extends Component {
           songs: this.state.songs.sort(sort("genre")).reverse(),
         });
         break;
-      case "sortRating09":
+      case "sortRatingAZ":
+        console.log("rating 09");
         this.setState({ songs: this.state.songs.sort(sort("rating")) });
         break;
-      case "sortRating90":
+      case "sortRatingZA":
+        console.log("rating 90");
         this.setState({
           songs: this.state.songs.sort(sort("rating")).reverse(),
         });
