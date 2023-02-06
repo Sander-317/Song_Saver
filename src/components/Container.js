@@ -5,6 +5,7 @@ import InputForm from "./InputForm";
 import SongList from "./SongList";
 import Footer from "./Footer";
 import AddGenre from "./modal/AddGenre";
+import songs from "./songs";
 
 export default class Container extends Component {
   constructor() {
@@ -15,19 +16,20 @@ export default class Container extends Component {
       songId: 5,
       genreId: 4,
 
-      songs: [
-        { id: 1, song: "A song", artist: "A tester", genre: "punk", rating: 5 },
-        {
-          id: 2,
-          song: "E song",
-          artist: "E tester",
-          genre: "disco",
-          rating: 2,
-        },
-        { id: 3, song: "B song", artist: "B tester", genre: "rock", rating: 1 },
-        { id: 4, song: "C song", artist: "C tester", genre: "punk", rating: 4 },
-        { id: 5, song: "D song", artist: "D tester", genre: "rock", rating: 3 },
-      ],
+      songs: songs,
+      // [
+      //   { id: 1, song: "A song", artist: "A tester", genre: "punk", rating: 5 },
+      //   {
+      //     id: 2,
+      //     song: "E song",
+      //     artist: "E tester",
+      //     genre: "disco",
+      //     rating: 2,
+      //   },
+      //   { id: 3, song: "B song", artist: "B tester", genre: "rock", rating: 1 },
+      //   { id: 4, song: "C song", artist: "C tester", genre: "punk", rating: 4 },
+      //   { id: 5, song: "D song", artist: "D tester", genre: "rock", rating: 3 },
+      // ]
       genres: [
         { id: 1, genre: "punk" },
         { id: 2, genre: "rock" },
