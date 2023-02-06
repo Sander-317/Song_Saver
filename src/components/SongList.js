@@ -38,7 +38,6 @@ export default function SongList({ songs, removeSong, sortList }) {
                 <td>{item.artist}</td>
                 <td>{item.genre}</td>
                 <td>
-                  {/* FIXME: Try to find a way to get the icon a unique id i have no clue how i have tried many ways please help*/}
                   {[...Array(item.rating)].map((_, index) => {
                     return (
                       <FontAwesomeIcon
